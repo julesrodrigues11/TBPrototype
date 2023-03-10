@@ -98,18 +98,18 @@ void listDeck(std::vector<std::string>deck)
 
 void BattleSystem::generateHand()
 {
-  turnReset=false;
-  for(int i = 0; i < 3; i++)
+  turnReset = false;
+  for(int i = 0; i < unitsInBattle.size(); i++)
   {
-    std::cout<<"Turn "<<i+1<<std::endl;
+    std::cout << "Turn " << i + 1 << std::endl;
     for(int i = 0; i < 5; i++)
     {
       popCard();
     }
     listDeck(this->currentHand);
-    
-    if(this->cardCollection.size()==0)
-      turnReset=true;
+
+    if(this->cardCollection.size() == 0)
+      turnReset = true;
     
     this->currentHand.clear();
   }
