@@ -16,7 +16,9 @@ private:
   bool turnReset=false;
 public:
   BattleSystem(Unit unit1, Unit unit2, Unit unit3);
+  BattleSystem(std::vector<Unit>units);
   void setUnitsInBattle(Unit unit1, Unit unit2, Unit unit3);
+  void setUnitsInBattle(std::vector<Unit>units);
   void setCardCollection();
   void getCardCollection();
 

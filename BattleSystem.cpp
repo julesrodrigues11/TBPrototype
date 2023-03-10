@@ -11,11 +11,39 @@ BattleSystem::BattleSystem(Unit unit1, Unit unit2, Unit unit3)
   generateHand();
 }
 
+BattleSystem::BattleSystem(std::vector<Unit>units)
+{
+  setUnitsInBattle(units);
+  std::cout<<"Battle System has been created with ";
+
+  //For loop that iterates through the vector of units
+  for(auto it=unitsInBattle.begin(); it!=unitsInBattle.end(); ++it)
+  {
+    //Getting the name of the current unit
+    std::cout << (*it).getName();
+    //Check if the element that follows the current element is the last element
+    if(std::next(it)!=unitsInBattle.end())
+    {
+      std::cout <<  ", ";
+    }
+  }
+  std::cout << std::endl << std::endl;
+
+  setCardCollection();
+
+  generateHand();
+}
+
 void BattleSystem::setUnitsInBattle(Unit unit1, Unit unit2, Unit unit3)
 {
   unitsInBattle.push_back(unit1);
   unitsInBattle.push_back(unit2);
   unitsInBattle.push_back(unit3);
+}
+
+void BattleSystem::setUnitsInBattle(std::vector<Unit>units)
+{
+  unitsInBattle = units;
 }
 
 void BattleSystem::setCardCollection()

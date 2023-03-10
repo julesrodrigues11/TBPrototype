@@ -1,5 +1,7 @@
 #include "Unit.hpp"
 
+//Constructor for Unit class
+//Initialises Unit name and Unit deck
 Unit::Unit(std::string name, char card1, char card2, char card3, char card4, char card5)
 {
   this->setName(name);
