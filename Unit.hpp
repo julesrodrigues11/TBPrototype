@@ -7,6 +7,7 @@ class Unit
 {
 private:
   std::string unitName;
+  bool isActive = false;
   //char cardDeck[5];
 
 public:
@@ -18,6 +19,9 @@ public:
   //Setter and getter for unit name
   std::string getName();
   void setName(std::string name);
+
+  void setActive();
+  bool getActive();
 
   //Setter and getter for unit deck
   void getDeck();

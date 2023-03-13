@@ -1,18 +1,8 @@
 #include "BattleSystem.hpp"
 
-BattleSystem::BattleSystem(Unit unit1, Unit unit2, Unit unit3)
-{
-  setUnitsInBattle(unit1, unit2, unit3);
-  std::cout<<"Battle System has been created with ";
-  std::cout<<unit1.getName()<<", "<<unit2.getName()<<" and "<<unit3.getName()<<std::endl<<std::endl;
-
-  setCardCollection();
-
-  generateHand();
-}
-
 BattleSystem::BattleSystem(std::vector<Unit>units)
 {
+  int count = 0;
   setUnitsInBattle(units);
   std::cout<<"Battle System has been created with ";
 
@@ -26,19 +16,18 @@ BattleSystem::BattleSystem(std::vector<Unit>units)
     {
       std::cout <<  ", ";
     }
+    //Add the first three units to the active units vector and increment counter
+    if(count < 3)
+    {
+      activeUnits.push_back((*it));
+    }
+    count++;
   }
   std::cout << std::endl << std::endl;
 
   setCardCollection();
 
   generateHand();
-}
-
-void BattleSystem::setUnitsInBattle(Unit unit1, Unit unit2, Unit unit3)
-{
-  unitsInBattle.push_back(unit1);
-  unitsInBattle.push_back(unit2);
-  unitsInBattle.push_back(unit3);
 }
 
 void BattleSystem::setUnitsInBattle(std::vector<Unit>units)
@@ -48,9 +37,9 @@ void BattleSystem::setUnitsInBattle(std::vector<Unit>units)
 
 void BattleSystem::setCardCollection()
 {
-  for(auto it=this->unitsInBattle.begin(); it!=this->unitsInBattle.end(); ++it)
+  for(auto it=this->activeUnits.begin(); it!=this->activeUnits.end(); ++it)
     {
-      for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 5; i++)
         {
           std::string temp = (*it).getName();
           temp += (*it).cardDeck[i];
@@ -99,7 +88,7 @@ void listDeck(std::vector<std::string>deck)
 void BattleSystem::generateHand()
 {
   turnReset = false;
-  for(int i = 0; i < unitsInBattle.size(); i++)
+  for(int i = 0; i < activeUnits.size(); i++)
   {
     std::cout << "Turn " << i + 1 << std::endl;
     for(int i = 0; i < 5; i++)

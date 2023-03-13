@@ -23,6 +23,16 @@ void Unit::setName(std::string name)
   Unit::unitName = name;
 }
 
+void Unit::setActive()
+{
+  Unit::isActive = true;
+}
+
+bool Unit::getActive()
+{
+  return (this->isActive);
+}
+
 void Unit::getDeck()
 {
   std::cout<<this->cardDeck[0]<<this->cardDeck[1]<<this->cardDeck[2]<<this->cardDeck[3]<<this->cardDeck[4]<<std::endl;
