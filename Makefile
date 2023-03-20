@@ -3,6 +3,9 @@ CXXFLAGS = -g
 EXEC = game
 OBJS = BattleSystem.o Game.o Unit.o main.o
 
+all : ${EXEC}
+.PHONY : clean
+
 ${EXEC} : ${OBJS}
 		${CXX} ${CXXFLAGS} -o ${EXEC} ${OBJS}
 
