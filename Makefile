@@ -1,7 +1,10 @@
 CXX = g++
 CXXFLAGS = -g
-EXEC = game
+EXEC = bin/game
 OBJS = BattleSystem.o Game.o Unit.o main.o
+
+vpath %.cpp /src
+vpath %.hpp /include
 
 all : ${EXEC}
 .PHONY : clean
@@ -9,17 +12,17 @@ all : ${EXEC}
 ${EXEC} : ${OBJS}
 		${CXX} ${CXXFLAGS} -o ${EXEC} ${OBJS}
 
-Unit.o: Unit.cpp Unit.hpp
-	${CXX} ${CXXFLAGS} -c Unit.cpp
+Unit.o: src/Unit.cpp src/include/Unit.hpp
+	${CXX} ${CXXFLAGS} -c src/Unit.cpp
 
-BattleSystem.o: BattleSystem.cpp BattleSystem.hpp
-	${CXX} ${CXXFLAGS} -c BattleSystem.cpp
+BattleSystem.o: src/BattleSystem.cpp src/include/BattleSystem.hpp
+	${CXX} ${CXXFLAGS} -c src/BattleSystem.cpp
 
-Game.o: Game.cpp Game.hpp
-	${CXX} ${CXXFLAGS} -c Game.cpp
+Game.o: src/Game.cpp src/include/Game.hpp
+	${CXX} ${CXXFLAGS} -c src/Game.cpp
 
-main.o: main.cpp Game.hpp
-	${CXX} ${CXXFLAGS} -c main.cpp
+main.o: src/main.cpp src/include/Game.hpp
+	${CXX} ${CXXFLAGS} -c src/main.cpp
 
 clean:
 	rm -f ${EXEC} ${OBJS}
